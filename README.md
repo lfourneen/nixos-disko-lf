@@ -1,6 +1,6 @@
 # NixOS-Disko-LF
 
-[简体中文](./README_CN.md)
+English | [简体中文](./README_CN.md)
 
 This is a tutorial for installing `NixOS` with **declarative partitioning using Disko**, using the `BTRFS` filesystem. Directly write and execute a `disko.nix` on a NixOS Live ISO to complete GPT partitioning, LUKS2 dual encryption (main partition + swap), BTRFS subvolume creation, and high-performance mount options in one step.
 

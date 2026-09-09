@@ -1,5 +1,7 @@
 # NixOS-Disko-LF
 
+[English](./README.md) | 简体中文
+
 这是一个使用 **Disko 声明式分区** 安装 `NixOS` 的教程，文件系统采用 `BTRFS`。在 NixOS Live ISO 中直接编写并执行 `disko.nix`，一次性完成 GPT 分区、LUKS2 双加密（主分区 + swap）、BTRFS 子卷创建以及高性能挂载选项。
 
 本项目有以下特征/优点：
