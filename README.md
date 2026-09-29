@@ -29,7 +29,7 @@ lsblk
 
 ```bash
 cd /etc/nixos
-sudo git clone https://github.com/LFour86/nixos-disko-lf.git
+sudo git clone https://github.com/lfourneen/nixos-disko-lf.git
 ```
 
 Then run the following command to let Disko **automatically complete partitioning, LUKS2 encryption, BTRFS creation, and mounting** (you will be prompted to enter the LUKS password twice during the process):

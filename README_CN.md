@@ -28,7 +28,7 @@ lsblk
 
 ```bash
 cd /etc/nixos
-sudo git clone https://github.com/LFour86/nixos-disko-lf.git
+sudo git clone https://github.com/lfourneen/nixos-disko-lf.git
 ```
 
 然后，执行以下命令让 Disko **自动完成分区、LUKS2 加密、BTRFS 创建及挂载**（整个过程会提示输入两次 LUKS 密码）：
