@@ -23,7 +23,7 @@
   nix = {
     settings = {
       experimental-features = [ "nix-command" "flakes" ];
-      
+
       substituters = [
         "https://mirror.tuna.tsinghua.edu.cn/nix-channels/store"
         "https://mirrors.ustc.edu.cn/nix-channels/store"
@@ -34,23 +34,23 @@
 
   users = {
     mutableUsers = false;
-    
+
     users = {
       root = {
         hashedPasswordFile = "/persist/passwords/root";
       };
-      
+
       lfour = {
         uid = 1000;
         isNormalUser = true;
         hashedPasswordFile = "/persist/passwords/lfour";
         description = "LFour";
-        
-        extraGroups = [ 
-          "wheel" 
-          "networkmanager" 
-          "video" 
-          "audio" 
+
+        extraGroups = [
+          "wheel"
+          "networkmanager"
+          "video"
+          "audio"
         ];
       };
     };
@@ -88,7 +88,7 @@
       # KDE
       #plasma6.enable = true;
     };
-    
+
     displayManager = {
       defaultSession = "gnome";
 
@@ -111,7 +111,7 @@
   # Impermanence
   environment.persistence."/persist" = {
     hideMounts = true;
-    
+
     directories = [
       # Suggested subdirectory breakdown
       "/etc/NetworkManager/system-connections"
@@ -125,8 +125,10 @@
 
       "/var/lib/AccountsService"
       "/var/lib/bluetooth"
+      "/var/lib/chrony"
       "/var/lib/comfyui"
       "/var/lib/cups"
+      "/var/lib/dns-upstream"
       "/var/lib/hermes"
       "/var/lib/lastlog"
       "/var/lib/NetworkManager"
@@ -136,6 +138,7 @@
       "/var/lib/systemd/coredump"
       "/var/lib/systemd/linger"
       "/var/lib/tailscale"
+      "/var/lib/unbound"
       "/var/lib/upower"
       "/var/log"
     ];
@@ -154,13 +157,13 @@
   boot.initrd.systemd.enable = true;
 
   boot.initrd.availableKernelModules = [ "tpm" "tpm_tis" "tpm_crb" ];
-    
+
   boot.initrd.systemd.extraBin = {
     cryptsetup = "${pkgs.cryptsetup}/bin/cryptsetup";
     tpm2_pcrread = "${pkgs.tpm2-tools}/bin/tpm2_pcrread";
   };
-  
-  boot.initrd.systemd.extraBin.btrfs = "${pkgs.btrfs-progs}/bin/btrfs"; # Ensure btrfs tool is available in initrd  
+
+  boot.initrd.systemd.extraBin.btrfs = "${pkgs.btrfs-progs}/bin/btrfs"; # Ensure btrfs tool is available in initrd
   boot.initrd.systemd.services.rollback = {
     description = "Rollback BTRFS root subvolume to a pristine state";
     wantedBy = [ "initrd.target" ];
@@ -196,7 +199,7 @@
 
   environment.systemPackages = with pkgs; [
     age
-    btrfs-progs 
+    btrfs-progs
     clash-verge-rev
     disko
     firefox
